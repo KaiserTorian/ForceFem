@@ -1,0 +1,47 @@
+<Items>  
+  <Item name="" identifier="femhammer" category="Weapon" Tags="smallitem,mountableweapon,clowns" Scale="0.5" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" RequireAimToUse="True">
+    <PreferredContainer primary="crewcab" secondary="armcab"/>
+    <PreferredContainer secondary="wreckarmcab,abandonedarmcab,piratearmcab" spawnprobability="0.06"/>
+    <Price baseprice="80" sold="false" canbespecial="false">
+      <Price storeidentifier="merchantoutpost" sold="true" minavailable="1"/>
+      <Price storeidentifier="merchantcity" sold="true" minavailable="1"/>
+      <Price storeidentifier="merchantresearch" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+      <Price storeidentifier="merchantmine" multiplier="1.25" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="bikehorn" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredItem identifier="bikehorn"/>
+      <RequiredItem identifier="plastic"/>
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="641,960,64,64" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,311,121,55" depth="0.55" origin="0.5,0.5" />
+    <Body width="120" height="48" density="20" />
+    <MeleeWeapon slots="RightHand+LeftHand,Any" controlpose="true" aimpos="45,10" handle1="-20,0" handle2="-10,5" holdangle="60" reload="1" range="100" combatpriority="1" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnUse" target="UseTarget" delay="1" comparison="Or">
+        <Conditional speciesname="latcher"/>
+        <Conditional speciesname="endworm"/>
+        <Conditional speciesname="charybdis"/>
+        <Conditional speciesgroup="abyss"/>
+        <TriggerEvent identifier="toyhammeronabyssmonster" />
+      </StatusEffect>
+      <Attack targetimpulse="2">
+        <Affliction identifier="stun" strength="0.2" />
+      </Attack>
+      <StatusEffect type="OnUse" target="UseTarget" forceplaysounds="true">
+        <Hook name="ForceFem"/>
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" forceplaysounds="true">
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit1.ogg" range="800" selectionmode="Random"/>
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit2.ogg" range="800" />
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit3.ogg" range="800" />
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit4.ogg" range="800" />
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit5.ogg" range="800" />
+        <Sound type="OnUse" file="Content/Items/Weapons/ToyHammerHit6.ogg" range="800" />
+      </StatusEffect>
+    </MeleeWeapon>
+    <aitarget sightrange="500" soundrange="1000" fadeouttime="3" />
+  </Item>
+</Items>
